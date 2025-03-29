@@ -24,7 +24,7 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
   void initState() {
     super.initState();
     isImportant = widget.note?.isImportant ?? false;
-    number = widget.note?.number ?? 0;
+    number = widget.note?.number ?? 1;
     title = widget.note?.title ?? "";
     description = widget.note?.description ?? "";
     isUpdateForm = widget.note != null;
@@ -41,7 +41,7 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
         key: _formKey,
         child: NoteFormWidget(
           isImportant: isImportant,
-          number: (widget.note?.number ?? 1).clamp(1, 5),
+          number: number,
           title: title,
           description: description,
           onChangeIsImportant: (value) {
@@ -107,5 +107,8 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
       description: description,
       createdTime: DateTime.now(),
     );
+    if (updateNote != null) {
+      await NoteDatabase.instance.updateNote(updateNote);
+    }
   }
 }

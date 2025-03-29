@@ -37,10 +37,10 @@ class NoteFormWidget extends StatelessWidget {
                 Switch(value: isImportant, onChanged: onChangeIsImportant),
                 Expanded(
                   child: Slider(
-                    value: number.clamp(1, 5).toDouble(),
+                    value: number.toDouble(),
                     min: 1.0,
                     max: 5.0,
-                    divisions: 5,
+                    divisions: 4,
                     onChanged: (value) => onChangeNumber(value.toInt()),
                   ),
                 ),
@@ -86,8 +86,8 @@ class NoteFormWidget extends StatelessWidget {
       initialValue: description,
       style: const TextStyle(
         // color: Colors.white70,
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
+        fontSize: 18,
+        fontWeight: FontWeight.normal,
       ),
       decoration: const InputDecoration(
         border: InputBorder.none,
@@ -101,6 +101,7 @@ class NoteFormWidget extends StatelessWidget {
         ? "Please type something as description"
         : null;
       },
+      onChanged: onChangeDescription,
     );
   }
 }

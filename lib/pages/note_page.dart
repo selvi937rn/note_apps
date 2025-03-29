@@ -40,12 +40,12 @@ class _NotePageState extends State<NotePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notes'),
+        title: const Text('Selvi \'s Notes'),
       ),
       body: isLoading
       ? const Center(child: CircularProgressIndicator())
       : notes.isEmpty
-      ? const Text("Notes Kosong")
+      ? const Center(child: Text("Notes Kosong"))
       : MasonryGridView.count(
         crossAxisCount: 2, 
         itemCount: notes.length,
